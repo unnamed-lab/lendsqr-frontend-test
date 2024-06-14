@@ -10,6 +10,11 @@
   min-height: 100vh;
   display: flex;
 }
+@media (max-width: 767px) {
+  .login_main .login_content {
+    flex-wrap: wrap;
+  }
+}
 .login_main .login_content .login_welcome {
   width: 50%;
   display: grid;
@@ -44,14 +49,27 @@
 @media (max-width: 767px) {
   .login_main .login_content .login_form {
     width: 100%;
+    border-radius: calc(var(--border-radius) + 16px) calc(var(--border-radius) + 16px) 0 0;
   }
 }
 .login_main .login_content .login_form .login_form_content {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  gap: 2rem;
+  gap: 1rem;
+}
+@media (max-width: 767px) {
+  .login_main .login_content .login_form .login_form_content {
+    gap: 0.5rem;
+  }
 }
 .login_main .login_content .login_form .login_form_content .login_form_heading {
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 767px) {
+  .login_main .login_content .login_form .login_form_content .login_form_heading {
+    margin-bottom: 1rem;
+  }
 }
 .login_main .login_content .login_form .login_form_content .login_form_heading .login_form_header {
   color: #21407d;
@@ -68,10 +86,16 @@
 }
 .login_main .login_content .login_form .login_form_content .login_form_body {
   width: 80%;
-  gap: 1rem;
+  gap: 1.5rem;
   display: flex;
   flex-direction: column;
   line-height: 16.39px;
+}
+@media (max-width: 767px) {
+  .login_main .login_content .login_form .login_form_content .login_form_body {
+    width: 90%;
+    margin-inline: auto;
+  }
 }
 
 /*# sourceMappingURL=page.module.css.map */
