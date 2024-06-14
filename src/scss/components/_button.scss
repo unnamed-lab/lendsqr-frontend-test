@@ -1,1 +1,19 @@
 @use "../custom" as *;
+
+.login-button {
+  color: $white;
+  background-color: $accent;
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  width: 100%;
+  text-transform: uppercase;
+  transition: background-color 3s ease-in-out;
+
+  &:hover {
+    background-color: $secondary;
+  }
+
+  &:active {
+    background-color: $primary;
+  }
+}
