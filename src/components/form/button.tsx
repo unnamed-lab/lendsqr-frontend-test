@@ -9,7 +9,7 @@ export default function Button({
     <button
       type={type}
       className={
-        "login-button" +
+        "button" +
         " " +
         (typeof className !== "undefined" ? className : "")
       }

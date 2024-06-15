@@ -70,7 +70,7 @@
   .input-error {
     background-color: #f10c0c80;
     border-left: 4px solid #f10c0c;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     padding-block: 0.66rem;
     padding-inline: 0.5rem;
     font-weight: 600;
@@ -84,4 +84,32 @@
   color: $accent;
   font-size: 0.875rem;
   font-weight: 600;
+}
+
+.search-bar {
+  gap: 0;
+  display: flex;
+  align-items: stretch;
+  flex: 1 0 auto;
+
+  .search-input {
+    height: 40px;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    gap: 0;
+    flex: 1 0 auto;
+
+    &:focus-visible {
+      outline: none !important;
+    }
+  }
+
+  .search-button {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 40px;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
 }

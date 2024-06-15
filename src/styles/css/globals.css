@@ -22,25 +22,29 @@
   font-family: "Avenir Next", "Poppins", Arial, Helvetica, sans-serif;
 }
 
-.login-button {
+.button {
   cursor: pointer;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.875rem;
   background-color: #39CDCC;
-  padding-block: 1rem;
-  padding-inline: 1.5rem;
-  width: 100%;
+  padding: 0.5rem;
   text-transform: uppercase;
   transition: background-color 500ms ease-in-out;
   border: none;
   border-radius: var(--border-radius);
+  height: inherit;
 }
-.login-button:hover {
+.button:hover {
   background-color: #88d6fd;
 }
-.login-button:active {
+.button:active {
   background-color: #21407d;
+}
+.button.login-button {
+  width: 100%;
+  padding-block: 1rem !important;
+  padding-inline: 1.5rem !important;
 }
 
 .input-group {
@@ -120,6 +124,31 @@
   font-weight: 600;
 }
 
+.search-bar {
+  gap: 0;
+  display: flex;
+  align-items: stretch;
+  flex: 1 0 auto;
+}
+.search-bar .search-input {
+  height: 40px;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  gap: 0;
+  flex: 1 0 auto;
+}
+.search-bar .search-input:focus-visible {
+  outline: none !important;
+}
+.search-bar .search-button {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 40px;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
 :root {
   --max-width: 1100px;
   --border-radius: 8px;
@@ -151,5 +180,123 @@ a {
 }
 
 /*  Section SCSS Modules  */
+.app-navigation {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding-block: 1.25rem;
+  padding-inline: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-navigation .app-navigation_brand {
+  display: flex;
+}
+.app-navigation .app-navigation_brand a img {
+  width: 7rem;
+  height: auto;
+  margin-right: 2rem;
+}
+.app-navigation .app-navigation_search {
+  display: flex;
+  width: 400px;
+  margin: 0 auto;
+}
+.app-navigation .app-navigation_menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-weight: 400;
+  color: #21407d;
+}
+@media (max-width: 767px) {
+  .app-navigation .app-navigation_menu {
+    margin-left: auto;
+  }
+}
+.app-navigation .app-navigation_menu .menu-text {
+  text-decoration: underline;
+}
+@media (max-width: 767px) {
+  .app-navigation .app-navigation_menu .menu-text {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .app-navigation .app-navigation_menu .menu-notify {
+    display: none;
+  }
+}
+.app-navigation .app-navigation_menu .profile-card {
+  display: flex;
+  align-items: flex;
+  gap: 1rem;
+}
+@media (max-width: 767px) {
+  .app-navigation .app-navigation_menu .profile-card {
+    gap: 0.45rem;
+  }
+}
+.app-navigation .app-navigation_menu .profile-card .profile-card_thumbnail {
+  pointer-events: none;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .app-navigation .app-navigation_menu .profile-card .profile-card_thumbnail {
+    width: 42px;
+    height: 42px;
+  }
+}
+.app-navigation .app-navigation_menu .profile-card .profile-card_thumbnail img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.app-navigation .app-navigation_menu .profile-card .profile-card_thumbnail span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #c2c2c2;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.app-navigation .app-navigation_menu .profile-card .profile-card_info {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+@media (max-width: 767px) {
+  .app-navigation .app-navigation_menu .profile-card .profile-card_info {
+    font-size: 0.75rem;
+    gap: 0.25rem;
+  }
+}
+
+.app-navigation_desktop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 767px) {
+  .app-navigation_desktop .app-navigation_search {
+    display: none;
+  }
+}
 
 /*# sourceMappingURL=globals.css.map */

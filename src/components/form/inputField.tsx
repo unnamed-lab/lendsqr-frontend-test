@@ -83,7 +83,11 @@ function InputField({
           placeholder={placeholder ? placeholder : "Input value in field"}
           name={name}
           onChange={handleFieldChange}
-          pattern={`${pattern}`.slice(1, -2)}
+          pattern={
+            typeof pattern !== "undefined"
+              ? `${pattern}`.slice(1, -2)
+              : undefined
+          }
           min={min}
           minLength={minLength}
           max={max}
