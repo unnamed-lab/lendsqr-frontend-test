@@ -3,25 +3,54 @@
 import { InputFieldProps } from "@/interfaces/form";
 import { useEffect, useState } from "react";
 import styles from "@/styles/css/page.module.css";
+import { checkPattern } from "@/utils/validate.form";
 
+/**
+ *
+ * @param label add input label text [optional]
+ * @param className add custom class [optional]
+ * @param id add unique identifier [optional]
+ * @param name add name of the input field
+ * @param placeholder add placeholder text
+ * @param errorMsg add custom form error message
+ * @param type set input field type
+ * @param required make field compulsory to fill (default: false) [optional]
+ * @param pattern create unique field pattern [optional]
+ * @returns JSX.Element
+ */
 function InputField({
   label,
   className,
   id,
   name,
   placeholder,
+  errorMsg = "Please fill in the right value in the field",
   type = "text",
   getData,
+  required,
+  pattern,
+  min,
+  max,
+  minLength,
+  maxLength,
 }: InputFieldProps) {
   const identifier = id ? id : `${name}Id`;
   const [currentType, setCurrentType] = useState<InputFieldProps["type"]>(type);
   const [inputData, setInputData] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
   const isPassword =
     type === "password" ? "input-field input-field_password" : "input-field";
 
   useEffect(() => {
     getData((prev) => ({ ...prev, [name]: inputData }));
   }, [inputData, name, getData]);
+
+  useEffect(() => {
+    if (pattern) {
+      const status = checkPattern(pattern, inputData);
+      setError(!status);
+    }
+  }, [inputData, pattern]);
 
   const handleChangeType = () => {
     if (currentType !== "password") {
@@ -33,9 +62,10 @@ function InputField({
 
   return (
     <div className="input-group">
-      {label && <label htmlFor={identifier}></label>}
+      {label && <label htmlFor={identifier} className="input-label"></label>}
       <div className="input-container">
         <input
+          required={required}
           type={currentType}
           className={
             isPassword + " " + (typeof className === "string" ? className : "")
@@ -46,6 +76,11 @@ function InputField({
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setInputData(e.target.value);
           }}
+          pattern={`${pattern}`}
+          min={min}
+          minLength={minLength}
+          max={max}
+          maxLength={maxLength}
         />
 
         {type === "password" && (
@@ -62,6 +97,7 @@ function InputField({
           </button>
         )}
       </div>
+      {error && <div className="input-error">{errorMsg}</div>}
     </div>
   );
 }

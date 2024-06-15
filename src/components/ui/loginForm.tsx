@@ -5,6 +5,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { Button, InputField } from "../form";
 import { TLoginData } from "@/types/form";
 import Link from "next/link";
+import { emailRegExp, passwordRegExp } from "@/utils/validate.form";
 
 export default function LoginForm() {
   const [formData, setFormData] = useState<TLoginData>({});
@@ -19,14 +20,18 @@ export default function LoginForm() {
         type="email"
         getData={setFormData}
         placeholder="Email"
+        required
+        pattern={emailRegExp}
       />
       <InputField
         name="password"
         type="password"
         getData={setFormData}
         placeholder="Password"
+        required
+        pattern={passwordRegExp}
       />
-      <Link href="#" className="forgot-password">
+      <Link href="#" className="forgot-password" type="submit">
         Forgot Password?
       </Link>
       <Button>Log In</Button>
