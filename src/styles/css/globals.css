@@ -188,6 +188,8 @@ a {
   padding-inline: 1.5rem;
   align-items: center;
   justify-content: space-between;
+  background-color: #ffffff;
+  box-shadow: 3px 0 20px rgba(0, 0, 0, 0.05);
 }
 .app-navigation .app-navigation_brand {
   display: flex;

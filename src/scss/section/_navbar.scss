@@ -9,6 +9,8 @@
   padding-inline: 1.5rem;
   align-items: center;
   justify-content: space-between;
+  background-color: $white;
+  box-shadow: 3px 0 20px rgba($color: #000000, $alpha: 0.05);
 
   .app-navigation_brand {
     display: flex;
