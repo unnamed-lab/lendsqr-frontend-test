@@ -29,6 +29,8 @@ function InputField({
   getData,
   required,
   pattern,
+  checkValidation,
+  isValid,
   min,
   max,
   minLength,
@@ -46,11 +48,18 @@ function InputField({
   }, [inputData, name, getData]);
 
   useEffect(() => {
-    if (pattern) {
-      const status = checkPattern(pattern, inputData);
-      setError(!status);
+    if (typeof isValid !== "undefined") setError(isValid);
+    console.log("Is Valid: ", isValid);
+  }, [isValid]);
+
+  const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value;
+    if (pattern && checkValidation) {
+      const status = checkPattern(pattern, input);
+      checkValidation((prev) => ({ ...prev, [e.target.name]: status }));
     }
-  }, [inputData, pattern]);
+    setInputData(input);
+  };
 
   const handleChangeType = () => {
     if (currentType !== "password") {
@@ -73,14 +82,13 @@ function InputField({
           id={identifier}
           placeholder={placeholder ? placeholder : "Input value in field"}
           name={name}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setInputData(e.target.value);
-          }}
+          onChange={handleFieldChange}
           pattern={`${pattern}`}
           min={min}
           minLength={minLength}
           max={max}
           maxLength={maxLength}
+          title={errorMsg}
         />
 
         {type === "password" && (
@@ -97,7 +105,9 @@ function InputField({
           </button>
         )}
       </div>
-      {error && <div className="input-error">{errorMsg}</div>}
+      {/* {typeof isValid !== "undefined" && !isValid && (
+        <div className="input-error">{errorMsg}</div>
+      )} */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { TLoginData } from "@/types/form";
+import { TLoginData, TLoginValidation } from "@/types/form";
 import { Dispatch, SetStateAction } from "react";
 
 export interface InputFieldProps {
@@ -12,6 +12,8 @@ export interface InputFieldProps {
   getData: Dispatch<SetStateAction<TLoginData>>;
   required?: boolean;
   pattern?: RegExp;
+  checkValidation?: Dispatch<SetStateAction<TLoginValidation>>;
+  isValid?: boolean
   min?: string | number;
   max?: string | number;
   minLength?: number;

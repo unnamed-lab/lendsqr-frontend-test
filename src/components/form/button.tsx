@@ -6,7 +6,14 @@ export default function Button({
   children,
 }: ButtonProps) {
   return (
-    <button type={type} className={"login-button" + " " + className}>
+    <button
+      type={type}
+      className={
+        "login-button" +
+        " " +
+        (typeof className !== "undefined" ? className : "")
+      }
+    >
       {children}
     </button>
   );

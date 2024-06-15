@@ -1,3 +1,5 @@
 type TLoginData = Record<string, string>;
 
-export type { TLoginData };
+type TLoginValidation = Record<string, boolean>;
+
+export type { TLoginData, TLoginValidation };
