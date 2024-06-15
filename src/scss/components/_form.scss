@@ -1,1 +1,87 @@
 @use "../custom" as *;
+
+.input-group {
+  width: 100%;
+  gap: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  .input-label {
+    color: $primary;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    width: 100%;
+  }
+
+  .input-container {
+    width: 100%;
+    display: flex;
+    position: relative;
+
+    .input-field {
+      position: relative;
+      font-family: "Avenir Next", "Poppins", Arial, Helvetica, sans-serif;
+      width: 100%;
+      border-radius: 5px;
+      padding-block: 1rem;
+      padding-inline: 0.75rem;
+      border: 2px solid rgba($color: $text-color, $alpha: 0.15);
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: $text-color;
+      transition: outline 3s ease-in-out;
+      background-color: var(--input-bg);
+
+      &::placeholder {
+        color: $text-color;
+      }
+
+      &:focus-visible {
+        outline: 1px solid $primary;
+      }
+
+      &.input-field_password {
+        padding-right: 20%;
+      }
+    }
+
+    .input-field_password_toggle {
+      cursor: pointer;
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      border: none;
+      background-color: var(--input-bg);
+      padding-inline: 0.25rem;
+      text-transform: uppercase;
+      color: $accent;
+      font-weight: 600;
+      font-size: 0.875rem;
+
+      &.show {
+        color: $secondary;
+      }
+    }
+  }
+
+  .input-error {
+    background-color: #f10c0c80;
+    border-left: 4px solid #f10c0c;
+    margin-top: .5rem;
+    padding-block: 0.66rem;
+    padding-inline: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 4px var(--border-radius) var(--border-radius) 4px;
+  }
+}
+
+.forgot-password {
+  text-transform: uppercase;
+  color: $accent;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
