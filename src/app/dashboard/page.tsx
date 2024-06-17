@@ -1,5 +1,7 @@
+import { CustomerSummary } from "@/components/ui/dashboard";
+
 export default function Dashboard() {
-  return (
-    <div>Dashboard</div>
-  )
+  return <section className="app-dashboard">
+    <CustomerSummary />
+  </section>;
 }
