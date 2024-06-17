@@ -29,3 +29,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+main {
+  max-width: 100svw;
+  display: flex;
+  min-height: 90svh;
+}
