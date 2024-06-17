@@ -153,6 +153,7 @@
 :root {
   --max-width: 1100px;
   --border-radius: 8px;
+  --card-border: 4px;
   --background-color: $white;
   --text-color: $text-color;
   --input-bg: $white;
@@ -455,7 +456,6 @@ main {
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 1rem;
-  flex: 1 1 auto;
 }
 .app-dashboard .app-dashboard_summary h1 {
   color: #21407d;
@@ -488,9 +488,9 @@ main {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 1.75rem 1rem;
+  padding: 1.75rem;
   border: 1px solid rgba(33, 64, 125, 0.06);
-  border-radius: 4px;
+  border-radius: var(--card-border);
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   min-width: 100px;
 }
@@ -511,6 +511,77 @@ main {
   font-weight: 600;
   line-height: 28.15px;
   text-align: left;
+  color: #21407d;
+}
+.app-dashboard .app-dashboard_data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1 1 0;
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_table {
+  background-color: #ffffff;
+  padding: 1.75rem;
+  border-radius: var(--card-border);
+  border: 1px solid rgba(33, 64, 125, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_pagination {
+  display: flex;
+  align-items: center;
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_pagination .app-dashboard_data_pagination_sort {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  gap: 1rem;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.42px;
+  text-align: left;
+  color: #545F7D;
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_pagination .app-dashboard_data_pagination_sort .pagination-select {
+  display: flex;
+  background-color: rgba(33, 64, 125, 0.1);
+  border: none;
+  border-radius: var(--card-border);
+  color: #21407d;
+  width: 80px;
+  height: 30px;
+  gap: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_pagination .app-dashboard_data_pagination_nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_pagination .app-dashboard_data_pagination_nav .navigation-btn {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: var(--card-border);
+  background-color: rgba(33, 64, 125, 0.1);
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_pagination .app-dashboard_data_pagination_nav .navigation-btn:hover, .app-dashboard .app-dashboard_data .app-dashboard_data_pagination .app-dashboard_data_pagination_nav .navigation-btn:active {
+  filter: grayscale(0.1);
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_pagination .app-dashboard_data_pagination_nav .navigation-number {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  color: #545F7D;
+  font-size: 1rem;
+  height: 18.77px;
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_pagination .app-dashboard_data_pagination_nav .navigation-number.active {
   color: #21407d;
 }
 
