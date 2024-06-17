@@ -32,6 +32,11 @@
   align-items: center;
   margin-bottom: 15%;
 }
+@media (max-width: 767px) {
+  .login_main .login_content .login_welcome .login_brand {
+    margin-bottom: 5%;
+  }
+}
 .login_main .login_content .login_welcome .login_welcome_img {
   width: 100%;
   height: auto;

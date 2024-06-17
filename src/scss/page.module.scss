@@ -32,6 +32,10 @@
         display: flex;
         align-items: center;
         margin-bottom: 15%;
+
+        @include responsive(mobile) {
+          margin-bottom: 5%;
+        }
       }
 
       .login_welcome_img {

@@ -1,4 +1,4 @@
-import { TLoginData, TLoginValidation } from "@/types/form";
+import { TFormData, TLoginValidation } from "@/types/form";
 import { Dispatch, SetStateAction } from "react";
 
 export interface InputFieldProps {
@@ -9,7 +9,7 @@ export interface InputFieldProps {
   placeholder?: string;
   errorMsg?: string;
   type: "email" | "text" | "number" | "password" | "url" | "search" | "tel";
-  getData: Dispatch<SetStateAction<TLoginData>>;
+  getData: Dispatch<SetStateAction<TFormData>>;
   required?: boolean;
   pattern?: RegExp;
   checkValidation?: Dispatch<SetStateAction<TLoginValidation>>;

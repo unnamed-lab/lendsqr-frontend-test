@@ -1,18 +1,17 @@
 @use "../custom" as *;
 
-.login-button {
+.button {
   cursor: pointer;
   color: $white;
   font-weight: 600;
   font-size: 0.875rem;
   background-color: $accent;
-  padding-block: 1rem;
-  padding-inline: 1.5rem;
-  width: 100%;
+  padding: 0.5rem;
   text-transform: uppercase;
   transition: background-color 500ms ease-in-out;
   border: none;
   border-radius: var(--border-radius);
+  height: inherit;
 
   &:hover {
     background-color: $secondary;
@@ -20,5 +19,11 @@
 
   &:active {
     background-color: $primary;
+  }
+
+  &.login-button {
+    width: 100%;
+    padding-block: 1rem !important;
+    padding-inline: 1.5rem !important;
   }
 }
