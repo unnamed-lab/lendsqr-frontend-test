@@ -17,7 +17,7 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 body {
@@ -50,6 +50,7 @@ a {
 
 main {
   max-width: 100svw;
+  width: 100%;
   display: flex;
   min-height: 90svh;
 }
