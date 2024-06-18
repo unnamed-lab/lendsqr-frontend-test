@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  overflow-x: auto;
 
   * {
     font-family: "Work Sans", "Avenir Next", "Poppins", Arial, sans-serif;
@@ -86,12 +87,11 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    flex: 1 1 auto; 
-     overflow-x: auto;
+    // flex: 1 1 auto; 
 
-    // @include responsive(mediadown) {
-    //   overflow-x: auto;
-    // }
+    @include responsive(mediadown) {
+      overflow-x: auto;
+    }
 
     .app-dashboard_data_table {
       width: 100%;
@@ -100,10 +100,11 @@
       border-radius: var(--card-border);
       border: 1px solid rgba($color: $primary, $alpha: 0.06);
       box-shadow: 3px 5px 20px rgba($color: $black, $alpha: 0.04);
-
-      @include responsive(mobile) {
-        width: max-content;
         overflow-x: auto;
+
+      @include responsive(mediadown) {
+        width: max-content;
+        // overflow-x: auto;
       }
 
       table {
@@ -122,7 +123,7 @@
           font-size: 0.75rem;
           cursor: pointer;
 
-          @include responsive(mobile) {
+          @include responsive(mediadown) {
             font-size: 0.6rem;
           }
         }
@@ -147,7 +148,7 @@
           position: relative;
           display: grid;
           grid-template-columns: var(--table-column);
-          gap: 1rem;
+          gap: .5rem;
           padding-block: 0.5rem;
 
           &:not(:last-child) {
@@ -163,7 +164,7 @@
         }
 
         thead tr {
-          margin-bottom: 1.5rem;
+          margin-bottom: 1rem;
           @include responsive(mobile) {
             gap: 0.25rem;
           }
@@ -269,7 +270,7 @@
 .app-modal {
   z-index: 9999;
   position: absolute;
-  right: -3rem;
+  right: .25rem;
   top: 0.25rem;
   background-color: $white;
   border-radius: var(--card-border);
@@ -277,17 +278,19 @@
   box-shadow: 3px 5px 20px rgba($color: #000000, $alpha: 0.04);
   padding: 0.75rem;
   width: max-content;
+  overflow-anchor: none;
 
   &.app-modal_edit {
     display: none;
     flex-direction: column;
     align-items: center;
-    width: 180px;
     gap: 0.5rem;
     opacity: 0;
     transition: all 1s ease;
-
+    width: 0;
+    
     &.active {
+      width: 180px;
       display: flex;
       opacity: 1;
     }

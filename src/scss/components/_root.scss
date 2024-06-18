@@ -8,7 +8,7 @@
   --background-color: $white;
   --text-color: $text-color;
   --input-bg: $white;
-  --table-column: minmax(0, 18%) minmax(0, 14%) minmax(0, 24.5%) minmax(0, 14%) minmax(0, 19%) minmax(0, 10%) minmax(0, 2.5%);
+  --table-column: minmax(0, 20%) minmax(0, 14%) minmax(0, 20%) minmax(0, 14%) minmax(0, 15%) minmax(0, 13.5%) minmax(0, 3.5%);
   @include responsive(mediadown) {
     
   --table-column: minmax(0, 18%) minmax(0, 14%) minmax(0, 21.5%) minmax(0, 14%) minmax(0, 19%) minmax(0, 12%) minmax(0, 3.5%);
