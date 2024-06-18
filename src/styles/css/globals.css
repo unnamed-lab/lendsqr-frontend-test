@@ -654,6 +654,7 @@ main {
   }
 }
 .app-dashboard .app-dashboard_data .app-dashboard_data_table table thead {
+  position: relative;
   text-transform: uppercase;
   color: #21407d;
   font-weight: 600;
@@ -686,10 +687,6 @@ main {
   gap: 0.5rem;
   padding-block: 0.5rem;
 }
-.app-dashboard .app-dashboard_data .app-dashboard_data_table table thead tr:not(:last-child),
-.app-dashboard .app-dashboard_data .app-dashboard_data_table table tbody tr:not(:last-child) {
-  border-bottom: 1px solid rgba(33, 64, 125, 0.1);
-}
 .app-dashboard .app-dashboard_data .app-dashboard_data_table table thead tr td,
 .app-dashboard .app-dashboard_data .app-dashboard_data_table table tbody tr td {
   display: flex;
@@ -697,12 +694,33 @@ main {
   gap: 0.75rem;
   overflow: auto;
 }
+.app-dashboard .app-dashboard_data .app-dashboard_data_table table tbody tr:not(:last-child) {
+  border-bottom: 1px solid rgba(33, 64, 125, 0.1);
+}
 .app-dashboard .app-dashboard_data .app-dashboard_data_table table thead tr {
   margin-bottom: 1rem;
 }
 @media (max-width: 767px) {
   .app-dashboard .app-dashboard_data .app-dashboard_data_table table thead tr {
     gap: 0.25rem;
+  }
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_table table thead tr td span {
+  display: flex;
+  gap: 0.75rem;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  position: relative;
+  text-transform: uppercase;
+  color: #21407d;
+  font-weight: 600;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+@media (max-width: 1023px) {
+  .app-dashboard .app-dashboard_data .app-dashboard_data_table table thead tr td span {
+    font-size: 0.6rem;
   }
 }
 .app-dashboard .app-dashboard_data .app-dashboard_data_table table tbody tr.item-loading td {

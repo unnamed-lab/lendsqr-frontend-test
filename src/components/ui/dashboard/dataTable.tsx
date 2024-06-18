@@ -4,6 +4,8 @@ import { Suspense, useState } from "react";
 import EditData from "./editData";
 import ModalBackdrop from "./modalBackdrop";
 import { redirect } from "next/navigation";
+import FilterData from "./filterData";
+import { TableHeadProps } from "@/interfaces/dashboard";
 
 export default function DataTable({
   data,
@@ -49,7 +51,7 @@ function TableBodyItem({
     typeof date !== "string" ? new Date(date).toLocaleDateString() : date;
 
   const handleRedirect = () => {
-    console.log("redirect click!")
+    console.log("redirect click!");
     // redirect(`/${id}`);
   };
   return (
@@ -121,35 +123,35 @@ function ToggleButton({ id }: { id: TUserId }) {
 }
 
 function TableHead() {
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  const handleClick = () => setIsActive((prev) => !prev);
   return (
-    <tr>
-      <TableHeadItem text="organisation" />
-      <TableHeadItem text="username" />
-      <TableHeadItem text="email" />
-      <TableHeadItem text="phone number" />
-      <TableHeadItem text="date joined" />
-      <TableHeadItem text="status" />
-      <TableHeadItem text="" icon={false} />
-    </tr>
+    <>
+      <tr>
+        <TableHeadItem handler={handleClick} text="organisation" />
+        <TableHeadItem handler={handleClick} text="username" />
+        <TableHeadItem handler={handleClick} text="email" />
+        <TableHeadItem handler={handleClick} text="phone number" />
+        <TableHeadItem handler={handleClick} text="date joined" />
+        <TableHeadItem handler={handleClick} text="status" />
+        <TableHeadItem text="" icon={false} />
+      </tr>
+      <FilterData state={isActive} />
+    </>
   );
 }
 
-function TableHeadItem({
-  text,
-  icon = true,
-}: {
-  text: string;
-  icon?: boolean;
-}) {
+function TableHeadItem({ text, icon = true, handler }: TableHeadProps) {
   return (
     <td>
-      {text}
-      {icon ? <FilterIcon /> : ""}
+      <span onClick={handler}>{text}</span>
+      {icon ? <FilterIcon handler={handler!} /> : ""}
     </td>
   );
 }
 
-function FilterIcon() {
+function FilterIcon({ handler }: { handler: () => void }) {
   return (
     <svg
       width="16"
@@ -157,6 +159,7 @@ function FilterIcon() {
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={handler}
     >
       <path
         d="M6.22222 13.3333H9.77778V11.5555H6.22222V13.3333ZM0 2.66666V4.44443H16V2.66666H0ZM2.66667 8.88888H13.3333V7.1111H2.66667V8.88888Z"
