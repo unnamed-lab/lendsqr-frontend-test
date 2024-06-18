@@ -4,6 +4,7 @@ import { Suspense, useState } from "react";
 import EditData from "./editData";
 import { IUserId } from "@/interfaces/dashboard";
 import ModalBackdrop from "./modalBackdrop";
+import { redirect } from "next/navigation";
 
 export default function DataTable({
   data,
@@ -47,14 +48,19 @@ function TableBodyItem({
 }: TableDataProps) {
   const datetime =
     typeof date !== "string" ? new Date(date).toLocaleDateString() : date;
+
+  const handleRedirect = () => {
+    console.log("redirect click!")
+    // redirect(`/${id}`);
+  };
   return (
     <tr>
-      <td>{organisation}</td>
-      <td>{username}</td>
-      <td>{email}</td>
-      <td>{mobile}</td>
-      <td>{datetime}</td>
-      <td>
+      <td onClick={handleRedirect}>{organisation}</td>
+      <td onClick={handleRedirect}>{username}</td>
+      <td onClick={handleRedirect}>{email}</td>
+      <td onClick={handleRedirect}>{mobile}</td>
+      <td onClick={handleRedirect}>{datetime}</td>
+      <td onClick={handleRedirect}>
         <StatusBadge stat={status} />
       </td>
       <td>

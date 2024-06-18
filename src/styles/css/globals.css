@@ -324,7 +324,7 @@ main {
   font-weight: 400;
   color: #21407d;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .app-navigation .app-navigation_menu {
     margin-left: auto;
   }
@@ -332,12 +332,12 @@ main {
 .app-navigation .app-navigation_menu .menu-text {
   text-decoration: underline;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .app-navigation .app-navigation_menu .menu-text {
     display: none;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .app-navigation .app-navigation_menu .menu-notify {
     display: none;
   }
@@ -347,7 +347,7 @@ main {
   align-items: flex;
   gap: 1rem;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .app-navigation .app-navigation_menu .profile-card {
     gap: 0.45rem;
   }
@@ -395,7 +395,7 @@ main {
   gap: 0.5rem;
   font-weight: 500;
 }
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .app-navigation .app-navigation_menu .profile-card .profile-card_info {
     font-size: 0.75rem;
     gap: 0.25rem;
@@ -544,11 +544,6 @@ main {
   flex-direction: column;
   gap: 2rem;
 }
-@media (max-width: 1023px) {
-  .app-dashboard {
-    overflow-x: auto;
-  }
-}
 .app-dashboard * {
   font-family: "Work Sans", "Avenir Next", "Poppins", Arial, sans-serif;
 }
@@ -621,11 +616,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
-@media (max-width: 1023px) {
-  .app-dashboard .app-dashboard_data {
-    overflow-x: auto;
-  }
+  flex: 1 1 auto;
+  overflow-x: auto;
 }
 .app-dashboard .app-dashboard_data .app-dashboard_data_table {
   width: 100%;
@@ -638,7 +630,7 @@ main {
 @media (max-width: 767px) {
   .app-dashboard .app-dashboard_data .app-dashboard_data_table {
     width: max-content;
-    overflow-y: auto;
+    overflow-x: auto;
   }
 }
 .app-dashboard .app-dashboard_data .app-dashboard_data_table table {
@@ -665,6 +657,9 @@ main {
 }
 .app-dashboard .app-dashboard_data .app-dashboard_data_table table tbody {
   font-size: 0.75rem;
+}
+.app-dashboard .app-dashboard_data .app-dashboard_data_table table tbody tr td {
+  cursor: pointer;
 }
 .app-dashboard .app-dashboard_data .app-dashboard_data_table table thead,
 .app-dashboard .app-dashboard_data .app-dashboard_data_table table tbody {
