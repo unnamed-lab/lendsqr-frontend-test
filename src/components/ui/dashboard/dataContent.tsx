@@ -135,7 +135,7 @@ export default function DataContent() {
   return (
     <section className="app-dashboard_data">
       <DataTable data={tableData} items={itemList} />
-      {/* <Pagination pages={tableData.length} setRange={setItemList} /> */}
+      <Pagination pages={tableData.length} setRange={setItemList} />
     </section>
   );
 }
