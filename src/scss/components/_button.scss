@@ -89,11 +89,18 @@
   gap: 1rem;
   background-color: transparent;
   border: none;
-  width: 130px;
+  min-width: 130px;
+  width: 100%;
   text-transform: capitalize;
   font-size: 14px;
   font-weight: 500;
   line-height: 16.42px;
   color: $text-color;
-  padding-block: .25rem;
+  padding-block: 0.25rem;
+  padding-inline: 0.5rem;
+  transition: all 1s ease linear;
+
+  &:hover {
+    background-color: rgba($color: $primary, $alpha: 0.05);
+  }
 }

@@ -104,13 +104,19 @@
   gap: 1rem;
   background-color: transparent;
   border: none;
-  width: 130px;
+  min-width: 130px;
+  width: 100%;
   text-transform: capitalize;
   font-size: 14px;
   font-weight: 500;
   line-height: 16.42px;
   color: #545f7d;
   padding-block: 0.25rem;
+  padding-inline: 0.5rem;
+  transition: all 1s ease linear;
+}
+.modal-edit-button:hover {
+  background-color: rgba(33, 64, 125, 0.05);
 }
 
 .input-group {
@@ -809,7 +815,7 @@ main {
   width: 0;
 }
 .app-modal.app-modal_edit.active {
-  width: 180px;
+  min-width: 180px;
   display: flex;
   opacity: 1;
 }

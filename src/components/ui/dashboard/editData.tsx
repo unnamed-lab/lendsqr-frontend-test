@@ -4,6 +4,7 @@ import {
   UserCancelOutlineIcon,
   UserCheckedOutlineIcon,
 } from "@/components/icons/basic";
+import { ModalProps } from "@/interfaces/dashboard";
 import { IconProps } from "@/interfaces/icons";
 import { EditDataItemProps, TUserId } from "@/types/dashboard";
 import { useState, useEffect } from "react";
@@ -11,10 +12,7 @@ import { useState, useEffect } from "react";
 export default function EditData({
   id,
   state,
-}: {
-  id: TUserId;
-  state: boolean;
-}) {
+}: ModalProps) {
   const [isActive, setIsActive] = useState<boolean>(false);
   useEffect(() => {
     setIsActive(state);

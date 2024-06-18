@@ -290,7 +290,7 @@
     width: 0;
     
     &.active {
-      width: 180px;
+      min-width: 180px;
       display: flex;
       opacity: 1;
     }
