@@ -4,16 +4,15 @@ import {
   UserCancelOutlineIcon,
   UserCheckedOutlineIcon,
 } from "@/components/icons/basic";
-import { IUserId } from "@/interfaces/dashboard";
 import { IconProps } from "@/interfaces/icons";
-import { EditDataItemProps } from "@/types/dashboard";
+import { EditDataItemProps, TUserId } from "@/types/dashboard";
 import { useState, useEffect } from "react";
 
 export default function EditData({
   id,
   state,
 }: {
-  id: IUserId;
+  id: TUserId;
   state: boolean;
 }) {
   const [isActive, setIsActive] = useState<boolean>(false);

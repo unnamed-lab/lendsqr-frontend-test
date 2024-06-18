@@ -1,8 +1,7 @@
 "use client";
-import { TableDataList, TableDataProps } from "@/types/dashboard";
+import { TableDataList, TableDataProps, TUserId } from "@/types/dashboard";
 import { Suspense, useState } from "react";
 import EditData from "./editData";
-import { IUserId } from "@/interfaces/dashboard";
 import ModalBackdrop from "./modalBackdrop";
 import { redirect } from "next/navigation";
 
@@ -88,7 +87,7 @@ function StatusBadge({ stat }: { stat: string }) {
   return <div className={`badge ${stat}`}>{stat}</div>;
 }
 
-function ToggleButton({ id }: { id: IUserId }) {
+function ToggleButton({ id }: { id: TUserId }) {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const handleClick = () => setIsActive((prev) => !prev);

@@ -1,4 +1,3 @@
-import { IUserId } from "@/interfaces/dashboard";
 import { DashboardIconProps, IconProps } from "@/interfaces/icons";
 import { Dispatch, SetStateAction } from "react";
 
@@ -19,8 +18,10 @@ export type GoToPaginationProps = { range: number; pages: number };
 
 export type PaginationArray = (number | string)[];
 
+export type TUserId = string | number;
+
 export type TableDataProps = {
-  readonly id: IUserId;
+  readonly id: TUserId;
   readonly organisation: string;
   readonly username: string;
   readonly email: string;
@@ -37,7 +38,7 @@ export type PaginationSectionProps = {
 };
 
 export type EditDataItemProps = {
-  id: IUserId;
+  id: TUserId;
   icon: (props?: IconProps) => JSX.Element;
   text: string;
 };
