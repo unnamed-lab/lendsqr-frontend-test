@@ -46,7 +46,6 @@ function SortPagination({ pages, setRange }: SortPaginationProps) {
 }
 
 function GoToPagination({ range, pages }: GoToPaginationProps) {
-
   //  I apologies for this amateur codebase
   const divisons = pages / range;
   let pageRedirect: PaginationArray = Array.from(
@@ -69,16 +68,12 @@ function GoToPagination({ range, pages }: GoToPaginationProps) {
     })
     .reverse();
 
-  let pageNumber = [...pageForward, "...", ...pageBackward];
+  let pageNumber = [
+    ...(divisons > 1 ? [...pageForward] : [1]),
+    ...(divisons > 4 ? ["...", ...pageBackward] : []),
+  ];
 
-  console.log(
-    pageRedirect.filter((el, i, arr) => {
-      console.log(arr[-2]);
-      if (el <= arr[2]) {
-        return el;
-      }
-    }),
-  );
+  console.log(divisons);
 
   return (
     <div className="app-dashboard_data_pagination_nav">

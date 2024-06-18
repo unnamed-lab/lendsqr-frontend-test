@@ -548,7 +548,7 @@ main {
   border: none;
   border-radius: var(--card-border);
   color: #21407d;
-  width: 80px;
+  width: 60px;
   height: 30px;
   gap: 1rem;
   padding: 0.25rem 0.5rem;
