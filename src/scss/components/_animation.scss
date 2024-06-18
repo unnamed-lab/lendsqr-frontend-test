@@ -1,1 +1,7 @@
 @use "../custom" as *;
+
+@keyframes item-load {
+    100% {
+        background-position: right;
+    }
+}

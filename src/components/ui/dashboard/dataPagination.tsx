@@ -3,17 +3,25 @@
 import {
   GoToPaginationProps,
   PaginationArray,
+  PaginationSectionProps,
   SortPaginationProps,
 } from "@/types/dashboard";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
-export default function Pagination() {
+export default function Pagination({
+  pages,
+  setRange,
+}: PaginationSectionProps) {
   const [rangeValue, setRangeSelect] = useState<number>(10);
-  const totalContent = 100;
+
+  useEffect(() => {
+    setRange(rangeValue)
+  }, [rangeValue, setRange])
+
   return (
     <section className="app-dashboard_data_pagination">
-      <SortPagination pages={totalContent} setRange={setRangeSelect} />
-      <GoToPagination range={rangeValue} pages={totalContent} />
+      <SortPagination pages={pages} setRange={setRangeSelect} />
+      <GoToPagination range={rangeValue} pages={pages} />
     </section>
   );
 }
@@ -72,8 +80,6 @@ function GoToPagination({ range, pages }: GoToPaginationProps) {
     ...(divisons > 1 ? [...pageForward] : [1]),
     ...(divisons > 4 ? ["...", ...pageBackward] : []),
   ];
-
-  console.log(divisons);
 
   return (
     <div className="app-dashboard_data_pagination_nav">

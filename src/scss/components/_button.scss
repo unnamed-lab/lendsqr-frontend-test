@@ -27,3 +27,73 @@
     padding-inline: 1.5rem !important;
   }
 }
+
+.toggle-btn {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background-color 300ms ease-in-out;
+
+  &:hover {
+    background-color: rgba($color: $primary, $alpha: 0.1);
+  }
+}
+
+.badge {
+  cursor: pointer;
+  user-select: none;
+  min-width: 80px;
+  height: 30px;
+  gap: 0px;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 16.42px;
+  text-align: center;
+
+  &.inactive {
+    color: $primary;
+    background-color: rgba($color: $text-color, $alpha: 0.06);
+  }
+
+  &.pending {
+    color: $warning;
+    background-color: rgba($color: $warning, $alpha: 0.06);
+  }
+
+  &.active {
+    color: $success;
+    background-color: rgba($color: $success, $alpha: 0.06);
+  }
+
+  &.blacklisted {
+    color: $danger;
+    background-color: rgba($color: $danger, $alpha: 0.06);
+  }
+}
+
+.modal-edit-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: transparent;
+  border: none;
+  width: 130px;
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.42px;
+  color: $text-color;
+  padding-block: .25rem;
+}

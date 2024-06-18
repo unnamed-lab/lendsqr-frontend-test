@@ -73,6 +73,13 @@
     gap: 0.5rem;
     margin-block: 1rem;
     padding-inline: 1.5rem;
+
+    @include responsive(mobile) {
+      svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
   }
 
   .app-side-menu {
