@@ -19,6 +19,7 @@ export default function EditData({
   }, [state, setIsActive]);
   const onScreen = isActive ? "active" : "";
 
+  if (typeof id === "undefined") return;
   return (
     <div className={`app-modal app-modal_edit ${onScreen}`}>
       <EditDataItem

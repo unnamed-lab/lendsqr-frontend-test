@@ -51,12 +51,13 @@ function TableBodyItem({
     typeof date !== "string" ? new Date(date).toLocaleDateString() : date;
 
   const handleRedirect = () => {
-    console.log("redirect click!");
-    // redirect(`/${id}`);
+    redirect(`/${id}`);
   };
   return (
     <tr>
-      <td onClick={handleRedirect}>{organisation}</td>
+      <td onClick={handleRedirect} style={{ textTransform: "capitalize" }}>
+        {organisation}
+      </td>
       <td onClick={handleRedirect}>{username}</td>
       <td onClick={handleRedirect}>{email}</td>
       <td onClick={handleRedirect}>{mobile}</td>
@@ -144,8 +145,8 @@ function TableHead() {
 
 function TableHeadItem({ text, icon = true, handler }: TableHeadProps) {
   return (
-    <td>
-      <span onClick={handler}>{text}</span>
+    <td onClick={handler}>
+      {text}
       {icon ? <FilterIcon handler={handler!} /> : ""}
     </td>
   );

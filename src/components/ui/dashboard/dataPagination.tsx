@@ -11,17 +11,22 @@ import { ChangeEvent, useEffect, useState } from "react";
 export default function Pagination({
   pages,
   setRange,
+  setPosition,
 }: PaginationSectionProps) {
   const [rangeValue, setRangeSelect] = useState<number>(10);
 
   useEffect(() => {
-    setRange(rangeValue)
-  }, [rangeValue, setRange])
+    setRange(rangeValue);
+  }, [rangeValue, setRange]);
 
   return (
     <section className="app-dashboard_data_pagination">
       <SortPagination pages={pages} setRange={setRangeSelect} />
-      <GoToPagination range={rangeValue} pages={pages} />
+      <GoToPagination
+        range={rangeValue}
+        pages={pages}
+        getPosition={setPosition}
+      />
     </section>
   );
 }
@@ -42,7 +47,7 @@ function SortPagination({ pages, setRange }: SortPaginationProps) {
       <select className="pagination-select" onChange={handleRangeSelect}>
         {variant.map((el, i) => {
           return (
-            <option key={i} value={el} selected={i == 0 ? true : false}>
+            <option key={i} value={el} defaultValue={i == 0 ? el : undefined}>
               {el}
             </option>
           );
@@ -53,9 +58,28 @@ function SortPagination({ pages, setRange }: SortPaginationProps) {
   );
 }
 
-function GoToPagination({ range, pages }: GoToPaginationProps) {
-  //  I apologies for this amateur codebase
+function GoToPagination({ range, pages, getPosition }: GoToPaginationProps) {
   const divisons = pages / range;
+  const [position, setPosition] = useState<number>(0);
+
+  useEffect(() => {
+    getPosition(position);
+  }, [getPosition, position]);
+
+  const handlePrev = () => {
+    if (position > 0) setPosition((prev) => prev - 1);
+  };
+
+  const handleNext = () => {
+    if (position < divisons - 1) setPosition((prev) => prev + 1);
+  };
+
+  const handleNumber = (value: number | string) => {
+    let input = typeof value === "string" ? position + 1 : value;
+    if (input < divisons ) setPosition(input);
+  };
+
+  //  I apologies for this amateur codebase
   let pageRedirect: PaginationArray = Array.from(
     { length: divisons },
     (_, i) => i + 1,
@@ -83,26 +107,43 @@ function GoToPagination({ range, pages }: GoToPaginationProps) {
 
   return (
     <div className="app-dashboard_data_pagination_nav">
-      <NavigationButton key={"next"} type="next" />
+      <NavigationButton key={"prev"} type="prev" handler={handlePrev} />
       {pageNumber.map((el, i) => {
-        return <NavigationNumber key={i} text={el} />;
+        return <NavigationNumber key={i} text={el} handler={handleNumber} />;
       })}
-      <NavigationButton key={"prev"} type="prev" />
+      <NavigationButton key={"next"} type="next" handler={handleNext} />
     </div>
   );
 }
 
-function NavigationNumber({ text }: { text: number | string }) {
+function NavigationNumber({
+  text,
+  handler,
+}: {
+  text: number | string;
+  handler: (num: number | string) => void;
+}) {
+  const value = text === "..." ? "..." : Number(text) - 1;
   return (
-    <button type="button" className="navigation-number">
+    <button
+      type="button"
+      className="navigation-number"
+      onClick={() => handler(value)}
+    >
       {text}
     </button>
   );
 }
 
-function NavigationButton({ type }: { type: "next" | "prev" }) {
+function NavigationButton({
+  type,
+  handler,
+}: {
+  type: "next" | "prev";
+  handler: () => void;
+}) {
   const icon =
-    type === "prev" ? (
+    type === "next" ? (
       <svg
         width="14"
         height="14"
@@ -131,8 +172,9 @@ function NavigationButton({ type }: { type: "next" | "prev" }) {
         </g>
       </svg>
     );
+
   return (
-    <button type="button" className="navigation-btn">
+    <button type="button" className="navigation-btn" onClick={handler}>
       {icon}
     </button>
   );

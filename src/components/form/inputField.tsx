@@ -49,7 +49,6 @@ function InputField({
 
   useEffect(() => {
     if (typeof isValid !== "undefined") setError(isValid);
-    console.log("Is Valid: ", isValid);
   }, [isValid]);
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {

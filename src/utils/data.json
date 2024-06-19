@@ -1,0 +1,26 @@
+[
+    {
+        "name":"",
+        "image":"",
+        "tier":"",
+        "mobile": "",
+        "email": "",
+        "bvn": 12345678901,
+        "gender":"",
+        "marital":"",
+        "children": 0,
+        "residence": "",
+        "education": "",
+        "bank":"",
+        "minIncome": 10000,
+        "maxIncome":20000,
+        "balance":22300,
+        "repayment": 2000,
+        "twitter":"",
+        "facebook": "",
+        "instagram":"",
+        "guarantor": [
+            {"name":"","mobile":"", "email":"", "relationship":""}
+        ]
+    }
+]
