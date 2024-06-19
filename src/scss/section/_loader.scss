@@ -1,0 +1,18 @@
+@use "../custom" as *;
+@use "../components/mixins" as *;
+@use "../components/animation" as *;
+
+.loader-section {
+  width: 100%;
+  height: 100svh;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .loader {
+    width: 120px;
+    height: auto;
+    animation: loader 4s ease-in-out infinite alternate;
+  }
+}
