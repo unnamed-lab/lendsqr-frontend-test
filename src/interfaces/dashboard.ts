@@ -9,10 +9,14 @@ export interface ModalProps {
 export interface TableHeadProps {
   text: string;
   icon?: boolean;
-  handler?: () => void; 
+  handler?: () => void;
 }
 
 // I don't know why this is still here 😂
 export interface IUserId {
   readonly id: string | number;
+}
+
+export interface UserDynamic {
+  params: { id: string };
 }

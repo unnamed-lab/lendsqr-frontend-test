@@ -3,7 +3,7 @@ import { TableDataList, TableDataProps, TUserId } from "@/types/dashboard";
 import { Suspense, useState } from "react";
 import EditData from "./editData";
 import ModalBackdrop from "./modalBackdrop";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import FilterData from "./filterData";
 import { TableHeadProps } from "@/interfaces/dashboard";
 
@@ -49,9 +49,10 @@ function TableBodyItem({
 }: TableDataProps) {
   const datetime =
     typeof date !== "string" ? new Date(date).toLocaleDateString() : date;
+  const router = useRouter();
 
   const handleRedirect = () => {
-    redirect(`/${id}`);
+    router.push(`/dashboard/${id}`);
   };
   return (
     <tr>
