@@ -1,13 +1,15 @@
 @use "../custom" as *;
 @use "../components/mixins" as *;
+@use "../components/animation" as *;
 
 .app-dashboard {
+  width: 100%;
   min-height: 90svh;
   padding: 4%;
   display: flex;
   flex-direction: column;
-  flex: 1 0 auto;
   gap: 2rem;
+  overflow-x: auto;
 
   * {
     font-family: "Work Sans", "Avenir Next", "Poppins", Arial, sans-serif;
@@ -20,7 +22,6 @@
     flex-direction: column;
     gap: 0.5rem;
     margin-bottom: 1rem;
-    flex: 1 1 auto;
 
     h1 {
       color: $primary;
@@ -50,9 +51,9 @@
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        padding: 1.75rem 1rem;
+        padding: 1.75rem;
         border: 1px solid rgba($color: $primary, $alpha: 0.06);
-        border-radius: 4px;
+        border-radius: var(--card-border);
         box-shadow: 3px 5px 20px rgba($color: #000000, $alpha: 0.04);
         min-width: 100px;
 
@@ -79,5 +80,256 @@
         }
       }
     }
+  }
+
+  .app-dashboard_data {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    // flex: 1 1 auto;
+
+    @include responsive(mediadown) {
+      overflow-x: auto;
+    }
+
+    .app-dashboard_data_table {
+      width: 100%;
+      background-color: $white;
+      padding: 1.75rem;
+      border-radius: var(--card-border);
+      border: 1px solid rgba($color: $primary, $alpha: 0.06);
+      box-shadow: 3px 5px 20px rgba($color: $black, $alpha: 0.04);
+      overflow-x: auto;
+
+      @include responsive(mediadown) {
+        width: max-content;
+        // overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        height: auto;
+        color: $text-color;
+
+        @include responsive(mediadown) {
+          width: max-content;
+        }
+
+        thead {
+          position: relative;
+          text-transform: uppercase;
+          color: $primary;
+          font-weight: 600;
+          font-size: 0.75rem;
+          cursor: pointer;
+
+          @include responsive(mediadown) {
+            font-size: 0.6rem;
+          }
+        }
+
+        tbody {
+          font-size: 0.75rem;
+
+          tr td {
+            cursor: pointer;
+          }
+        }
+
+        thead,
+        tbody {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 0.25rem;
+        }
+
+        thead tr,
+        tbody tr {
+          position: relative;
+          display: grid;
+          grid-template-columns: var(--table-column);
+          gap: 0.5rem;
+          padding-block: 0.5rem;
+
+
+          td {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            overflow: auto;
+          }
+        }
+
+        tbody tr:not(:last-child) {
+            border-bottom: 1px solid rgba($color: $primary, $alpha: 0.1);
+          }
+
+        thead tr {
+          margin-bottom: 1rem;
+          @include responsive(mobile) {
+            gap: 0.25rem;
+          }
+
+          td span {
+            display: flex;
+            gap: 0.75rem;
+            border: none;
+            background-color: transparent;
+            text-align: left;
+            position: relative;
+            text-transform: uppercase;
+            color: $primary;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+
+            @include responsive(mediadown) {
+              font-size: 0.6rem;
+            }
+          }
+        }
+
+        tbody tr.item-loading td {
+          width: 100%;
+          height: 20px;
+          background: linear-gradient(90deg, $g-100, $white) $white;
+          background-size: 300% 100%;
+          border-radius: var(--card-border);
+          animation: item-load 1s infinite linear;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .app-dashboard_data_pagination {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      @include responsive(mediadown) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .app-dashboard_data_pagination_sort {
+        display: flex;
+        align-items: center;
+        margin-right: auto;
+        gap: 1rem;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16.42px;
+        text-align: left;
+        color: $text-color;
+
+        @include responsive(mediadown) {
+          width: 100%;
+          margin-left: auto;
+          margin-bottom: 0.75rem;
+          justify-content: center;
+        }
+
+        .pagination-select {
+          display: flex;
+          background-color: rgba($color: $primary, $alpha: 0.1);
+          border: none;
+          border-radius: var(--card-border);
+          color: $primary;
+          width: 60px;
+          height: 30px;
+          gap: 1rem;
+          padding: 0.25rem 0.5rem;
+        }
+      }
+
+      .app-dashboard_data_pagination_nav {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-left: auto;
+
+        @include responsive(mediadown) {
+          margin-right: auto;
+        }
+
+        .navigation-btn {
+          cursor: pointer;
+          width: 24px;
+          height: 24px;
+          display: grid;
+          place-items: center;
+          border: none;
+          border-radius: var(--card-border);
+          background-color: rgba($color: $primary, $alpha: 0.1);
+
+          &:hover,
+          &:active {
+            filter: grayscale(0.1);
+          }
+        }
+
+        .navigation-number {
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+          font-weight: 500;
+          color: $text-color;
+          font-size: 1rem;
+          height: 18.77px;
+
+          &.active {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+.app-modal {
+  z-index: 9999;
+  position: absolute;
+  right: 0.25rem;
+  top: 0.25rem;
+  background-color: $white;
+  border-radius: var(--card-border);
+  border: 1px solid rgba($color: $text-color, $alpha: 0.4);
+  box-shadow: 3px 5px 20px rgba($color: #000000, $alpha: 0.04);
+  padding: 0.75rem;
+  width: max-content;
+  overflow-anchor: none;
+
+  &.app-modal_edit {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: all 1s ease;
+    width: 0;
+
+    &.active {
+      min-width: 180px;
+      display: flex;
+      opacity: 1;
+    }
+  }
+}
+
+.app-modal-backdrop {
+  position: fixed;
+  display: none;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100svw;
+  min-height: 100svh;
+  height: 100%;
+  backdrop-filter: blur(0.7px);
+
+  &.show {
+    display: block;
   }
 }

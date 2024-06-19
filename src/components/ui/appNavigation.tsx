@@ -30,7 +30,7 @@ function NavigationBrand() {
           priority
           className={""}
           src="/brand.svg"
-          alt="alt"
+          alt="Lendsqr"
           width={100}
           height={30}
         />
