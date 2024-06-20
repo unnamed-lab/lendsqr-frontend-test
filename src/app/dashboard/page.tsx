@@ -11,6 +11,8 @@ export default function Dashboard() {
   const [loanUser, setLoanUser] = useState<number>(0);
   const [savingUser, setSavingUser] = useState<number>(0);
 
+
+
   //  Get total users objects in the array
   useEffect(() => {
     if (data) {
@@ -49,7 +51,7 @@ export default function Dashboard() {
         users={user}
         activeUsers={activeUser}
         loan={loanUser}
-        savings={0}
+        savings={savingUser}
       />
       <DataContent data={data} />
     </section>
