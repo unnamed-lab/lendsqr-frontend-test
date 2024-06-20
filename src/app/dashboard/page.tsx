@@ -54,8 +54,7 @@ export default function Dashboard() {
     setSavingUser(balance.length);
   }, [data]);
 
-  if dat
-
+  
   return (
     <section className="app-dashboard">
       <CustomerSummary
