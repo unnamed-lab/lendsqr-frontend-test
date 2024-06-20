@@ -26,6 +26,30 @@
     padding-block: 1rem !important;
     padding-inline: 1.5rem !important;
   }
+
+  &.cancel,
+  &.activate {
+    background-color: transparent;
+    transition: background-color 1s ease linear;
+  }
+
+  &.cancel {
+    color: $danger;
+    border: 2px solid $danger;
+
+    &:hover {
+      background-color: rgba($color: $danger, $alpha: 0.1);
+    }
+  }
+
+  &.activate {
+    color: $secondary;
+    border: 2px solid $secondary;
+
+    &:hover {
+      background-color: rgba($color: $secondary, $alpha: 0.1);
+    }
+  }
 }
 
 .toggle-btn {
@@ -102,5 +126,28 @@
 
   &:hover {
     background-color: rgba($color: $primary, $alpha: 0.05);
+  }
+}
+
+.menu-btn {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 19.09px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  padding-inline: 1rem;
+  padding-block: 0.45rem;
+  transition:
+    color 300ms ease,
+    border-bottom 300ms ease;
+  border-bottom: 2px solid transparent;
+
+  &.active,
+  &:hover {
+    color: $accent;
+    border-bottom: 2px solid $accent;
   }
 }
