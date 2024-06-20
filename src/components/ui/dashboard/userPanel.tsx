@@ -92,7 +92,7 @@ function GeneralDetail({ data }: { data: User }) {
     { title: "instagram", property: data.instagram },
   ];
 
-  const guarantor = data.guarantor.map((el) => {
+  const guarantor = data.guarantor.map((el, i) => {
     const person = [
       { title: "full name", property: el.name },
       { title: "phone number", property: el.mobile },
@@ -100,7 +100,7 @@ function GeneralDetail({ data }: { data: User }) {
       { title: "relationship", property: el.relationship },
     ];
 
-    return <PanelContainer title="guarantor" data={person} />;
+    return <PanelContainer key={i} title="guarantor" data={person} />;
   });
   return (
     <>
