@@ -13,9 +13,9 @@ export const fetchDataFromApi = async () => {
 
     if (response) {
       const data = await response.json();
-      console.log(data)
       localStorage.setItem("lendsqr", JSON.stringify(data));
     }
+
   } catch (error) {
     console.error(error);
   }
