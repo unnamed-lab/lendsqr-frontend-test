@@ -5,13 +5,11 @@ describe("run basic validator test", () => {
 
   test("check if text with character greater than 3 is valid", () => {
     const valid = checkPattern(mockRegEx, "unnamedcodes");
-    console.log(valid);
     expect(valid).toBeTruthy();
   });
 
   test("check if text with character less than 3 is invalid", () => {
     const valid = checkPattern(mockRegEx, "an");
-    console.log(valid);
     expect(valid).toBeFalsy();
   });
 });

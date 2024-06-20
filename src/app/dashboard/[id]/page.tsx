@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
-import { User } from "@/types/dashboard";
 import users from "@/utils/users.json";
+import { User } from "@/types/dashboard";
 import { UserDynamic } from "@/interfaces/dashboard";
+import { UserContent } from "@/components/ui/dashboard";
 
 export default function Page({ params }: UserDynamic) {
   const [data, setData] = useState<User[]>(users);
@@ -12,8 +13,10 @@ export default function Page({ params }: UserDynamic) {
   })[0];
 
   return (
-    <div>
-      User {user.id}: {user.name}
-    </div>
+    <section className="app-dashboard">
+      <UserContent data={user} />
+    </section>
   );
 }
+
+

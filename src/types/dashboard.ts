@@ -24,6 +24,11 @@ export type PaginationArray = (number | string)[];
 
 export type TUserId = string | number;
 
+export type PanelContainerProps = {
+  title: string;
+  data: { title: string; property: string | number }[];
+};
+
 // export type TableDataList = Array<TableDataProps>; // Not using this anymore :)
 export type TableDataList = Array<User>;
 
