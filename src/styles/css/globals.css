@@ -1117,11 +1117,15 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem 1rem;
-  grid-template-columns: repeat(2, 1fr);
 }
 @media (max-width: 767px) {
   .app-dashboard .app-dashboard_user .app-dashboard_content .app-dashboard_content_container .content-info {
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-dashboard .app-dashboard_user .app-dashboard_content .app-dashboard_content_container .content-info {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .app-dashboard .app-dashboard_user .app-dashboard_content .app-dashboard_content_container .content-info .panel-content {
