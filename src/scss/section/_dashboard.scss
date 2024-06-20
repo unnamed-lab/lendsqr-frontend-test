@@ -330,14 +330,14 @@
       }
 
       .header-buttons {
-        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 2rem;
         margin-left: auto;
-
+        
         @include responsive(mediadown) {
+          width: 100%;
           gap: 0.5rem;
 
           .button {

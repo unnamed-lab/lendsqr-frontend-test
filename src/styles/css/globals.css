@@ -902,7 +902,6 @@ main {
   }
 }
 .app-dashboard .app-dashboard_user .app-dashboard_user_header .header-buttons {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -911,6 +910,7 @@ main {
 }
 @media (max-width: 1023px) {
   .app-dashboard .app-dashboard_user .app-dashboard_user_header .header-buttons {
+    width: 100%;
     gap: 0.5rem;
   }
   .app-dashboard .app-dashboard_user .app-dashboard_user_header .header-buttons .button {
