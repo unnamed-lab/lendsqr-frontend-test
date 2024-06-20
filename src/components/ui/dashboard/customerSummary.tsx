@@ -6,18 +6,28 @@ import {
 } from "@/components/icons/dashboard";
 import { CustomerSummaryArray, CustomerSummaryProps } from "@/types/dashboard";
 
-export default function CustomerSummary() {
+export default function CustomerSummary({
+  users,
+  activeUsers,
+  loan,
+  savings,
+}: {
+  users: number;
+  activeUsers: number;
+  loan: number;
+  savings: number;
+}) {
   const data: CustomerSummaryArray = [
-    { title: "users", quantity: 2453, icon: () => <PersonIcon /> },
-    { title: "active users", quantity: 2145, icon: () => <UsersIcon /> },
+    { title: "users", quantity: users, icon: () => <PersonIcon /> },
+    { title: "active users", quantity: activeUsers, icon: () => <UsersIcon /> },
     {
       title: "users with loans",
-      quantity: 12453,
+      quantity: loan,
       icon: () => <DataRecordIcon />,
     },
     {
       title: "users with savings",
-      quantity: 102453,
+      quantity: savings,
       icon: () => <DatabaseIcon />,
     },
   ];
