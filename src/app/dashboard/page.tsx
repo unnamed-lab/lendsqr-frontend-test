@@ -3,15 +3,21 @@ import { CustomerSummary, DataContent } from "@/components/ui/dashboard";
 import { TableDataList } from "@/types/dashboard";
 import { useEffect, useState } from "react";
 import users from "@/utils/users.json";
+import { fetchDataFromApi } from "@/utils/getdata";
 
 export default function Dashboard() {
-  const [data, setData] = useState<TableDataList>(users || []);
+  const [data, setData] = useState<TableDataList>( [],
+  );
   const [user, setUser] = useState<number>(0);
   const [activeUser, setActiveUser] = useState<number>(0);
   const [loanUser, setLoanUser] = useState<number>(0);
   const [savingUser, setSavingUser] = useState<number>(0);
 
-
+  useEffect(() => {
+    fetchDataFromApi();
+    const data = JSON.parse(localStorage.getItem("lendsqr")!);
+    setData(data?.data)
+  }, []);
 
   //  Get total users objects in the array
   useEffect(() => {
