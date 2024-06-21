@@ -6,12 +6,16 @@ import users from "@/utils/users.json";
 import { fetchDataFromApi } from "@/utils/getdata";
 
 export default function Dashboard() {
-  const storedData = JSON.parse(localStorage.getItem("lendsqr")!)?.data;
+  let storedData:any;
   const [data, setData] = useState<TableDataList>( storedData || []);
   const [user, setUser] = useState<number>(0);
   const [activeUser, setActiveUser] = useState<number>(0);
   const [loanUser, setLoanUser] = useState<number>(0);
   const [savingUser, setSavingUser] = useState<number>(0);
+
+  useEffect(()=> {
+    storedData = JSON.parse(localStorage.getItem("lendsqr")!)?.data;
+  }, [])
 
   useEffect(() => {
     if (!storedData) {
