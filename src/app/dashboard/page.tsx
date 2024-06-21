@@ -6,18 +6,25 @@ import users from "@/utils/users.json";
 import { fetchDataFromApi } from "@/utils/getdata";
 
 export default function Dashboard() {
-  const [data, setData] = useState<TableDataList>( [],
-  );
+  let storedData:any;
+  const [data, setData] = useState<TableDataList>( storedData || []);
   const [user, setUser] = useState<number>(0);
   const [activeUser, setActiveUser] = useState<number>(0);
   const [loanUser, setLoanUser] = useState<number>(0);
   const [savingUser, setSavingUser] = useState<number>(0);
 
+  useEffect(()=> {
+    storedData = JSON.parse(localStorage.getItem("lendsqr")!)?.data;
+  }, [])
+
   useEffect(() => {
-    fetchDataFromApi();
-    const data = JSON.parse(localStorage.getItem("lendsqr")!);
-    setData(data?.data)
-  }, []);
+    if (!storedData) {
+      fetchDataFromApi().then(() =>
+        setData(JSON.parse(localStorage.getItem("lendsqr")!)?.data),
+      );
+      // setData(storedData);
+    }
+  }, [ storedData]);
 
   //  Get total users objects in the array
   useEffect(() => {
@@ -51,6 +58,7 @@ export default function Dashboard() {
     setSavingUser(balance.length);
   }, [data]);
 
+  
   return (
     <section className="app-dashboard">
       <CustomerSummary

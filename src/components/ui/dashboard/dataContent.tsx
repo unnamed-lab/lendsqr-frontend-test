@@ -12,7 +12,10 @@ export default function DataContent({ data }: { data: TableDataList }) {
   const [position, setPosition] = useState<number>(0);
   const [tableData, setTableData] = useState<TableDataList>([]);
 
-  function formatArray(array: User[], count: number) {
+  function formatArray(array: User[] | undefined, count: number) {
+    if (typeof array === "undefined") {
+      return [[]];
+    }
     const newArray: Array<User[]> = [];
     for (let i = 0; i < array.length; i += count) {
       newArray.push(array.slice(i, i + count));
@@ -34,7 +37,7 @@ export default function DataContent({ data }: { data: TableDataList }) {
     <section className="app-dashboard_data">
       <DataTable data={tableData} items={itemList} />
       <Pagination
-        pages={data.length}
+        pages={data ? data.length : 0}
         setRange={setItemList}
         setPosition={setPosition}
       />
